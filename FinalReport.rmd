@@ -68,12 +68,37 @@ barchartGC(results, type = "percent")
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
-
+  
 #abac data
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
+    
+#Druggies data
+```{r}
+colPerc(results1)
+rowPerc(results1)
+```
+  
+#Female Data
+```{r}
+colPerc(results2)
+rowPerc(results2)
+```
+  
+#Male data
+```{r}
+colPerc(results3)
+rowPerc(results3)
+```
+  
+#Sexualorientaion data  
+```{r}
+colPerc(results4)
+rowPerc(results4)
+```
+
 
 ## Inferential Results
 
@@ -83,25 +108,45 @@ rowPerc(results)
 ```{r}
 chisqtestGC(results, graph = TRUE)
 ```
+
+```{r}
+fisher.test(results)
+```
   
 #Druggies data
 ```{r}
 chisqtestGC(results1, graph = TRUE)
+```
+
+```{r}
+fisher.test(results1)
 ```
   
 #Female data
 ```{r}
 chisqtestGC(results2, graph = TRUE)
 ```
+
+```{r}
+fisher.test(results2)
+```
   
 #Male data
 ```{r}
 chisqtestGC(results3, graph = TRUE)
 ```
+
+```{r}
+fisher.test(results3)
+```
   
 #Sexualorientaton data
 ```{r}
 chisqtestGC(results4, graph = TRUE)
+```
+
+```{r}
+fisher.test(results4)
 ```
   
 # Discussion and Conclusion
