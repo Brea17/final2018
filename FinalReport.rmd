@@ -34,29 +34,34 @@ A new  preventative aides (abacavirinol) is under test in clinical trials. Analy
 ### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
+
+#abac data
 ```{r}
 results <- xtabs(~infected+treatment, data = abac)
 barchartGC(results, type = "percent")
 ```
 
-
+#Druggies data
 ```{r}
-results <- xtabs(~infected+treatment, data = Druggies)
+results1 <- xtabs(~infected+treatment, data = Druggies)
 barchartGC(results, type = "percent")
 ```
 
+#Female data
 ```{r}
-results <- xtabs(~infected+treatment, data = Female)
+results2 <- xtabs(~infected+treatment, data = Female)
 barchartGC(results, type = "percent")
 ```
 
+#Male Data
 ```{r}
-results <- xtabs(~infected+treatment, data = Male)
+results3 <- xtabs(~infected+treatment, data = Male)
 barchartGC(results, type = "percent")
 ```
 
+#Sexualorientation data
 ```{r}
-results <- xtabs(~infected+treatment, data = Sexualorientation)
+results4 <- xtabs(~infected+treatment, data = Sexualorientation)
 barchartGC(results, type = "percent")
 ```
 
@@ -64,11 +69,41 @@ barchartGC(results, type = "percent")
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+#abac data
+```{r}
+colPerc(results)
+rowPerc(results)
+```
+
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
-
-
+  
+#abac data
+```{r}
+chisqtestGC(results, graph = TRUE)
+```
+  
+#Druggies data
+```{r}
+chisqtestGC(results1, graph = TRUE)
+```
+  
+#Female data
+```{r}
+chisqtestGC(results2, graph = TRUE)
+```
+  
+#Male data
+```{r}
+chisqtestGC(results3, graph = TRUE)
+```
+  
+#Sexualorientaton data
+```{r}
+chisqtestGC(results4, graph = TRUE)
+```
+  
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
