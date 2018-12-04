@@ -1,0 +1,78 @@
+---
+title: "Females"
+author: "Breawna Diefenderfer"
+date: "December 5, 2018"
+output: html_document
+---
+
+```{r include=FALSE,echo=FALSE}
+require(tidyverse)
+require(tigerstats)
+abac <-read.csv(file="abacavirinol.csv",header=TRUE)
+Female <- filter(abac,sex=="F")
+Male <- filter(abac, sex=="M")
+Druggies <- filter(abac, Ivdrug=="user")
+Sexualorientation <- filter(abac, LBGT=="yes")
+```
+
+# Introduction
+
+<!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
+
+A new  preventative aides (abacavirinol) is under test in clinical trials. In this report I will analyze the effectiveness of the abacavirinol drug, further refered to as "abac," in variable groups in order to see if any factors effect the drug. The groups on consideration are gender, intravenous(IV) drug use, and sexual orientation.
+
+# Methods
+
+<!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+This report will look at graphs of the data in which the desired groups are seperated and classified by infection and drug type (real or placebo). In addition this report will compare the numeric precentages of infection by placebo or drug takers. It will compare p-values of the fisher test and chi-squared test to decide if the null hypothesis, the drug is less effective than the placebo, is rejected.
+  
+#Results
+
+<!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+## Graphical Descriptive Results
+
+<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
+  
+###Female data
+```{r}
+results2 <- xtabs(~infected+treatment, data = Female)
+barchartGC(results2, type = "percent")
+```
+
+Those who did not aquire AIDS were about equal between those taking the drug and those taking the placebo, though those on the placebo have a slightly higher percentage. Of the people who got AIDS more were taking the abac than those who were on the placebo, this indicates the abac drug is not doing its job in helping prevent AIDS. This graph also suggests the abac drug is less likely to work on women.
+
+## Numerical Descriptive Results
+
+<!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+  
+###Female Data
+```{r}
+colPerc(results2)
+rowPerc(results2)
+```
+  When isolated to only the females; 3.96% of  those taking the abac drug became infected and of those taking the placebo only 2.59% become infected.
+
+## Inferential Results
+
+<!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+    
+###Female data
+```{r}
+chisqtestGC(results2, graph = TRUE)
+```
+  
+  We fail to reject the null hypothesis in this test with a p-value of 0.062.
+```{r}
+fisher.test(results2)
+```
+  We reject the null hypothesis in the fisher test with a P-VALUE of .049.
+  Because we fail to reject the null hypothesis in one and not the other the results are inconclusive, therefor we reject the null hypothesis.
+  
+
+# Discussion and Conclusion
+
+<!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+Overall taking into consideration the entire trial and variables the tests, graph and numerical results rejected the null hypothesis. Therefore, we conclude that the abac drug is more effective than the placebo. However, the drug works less effectively on women and those in the LGBT community than it does on men and IV drug users.
+
+
