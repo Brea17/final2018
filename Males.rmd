@@ -20,7 +20,8 @@ Sexualorientation <- filter(abac, LBGT=="yes")
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
 A new  preventative aides (abacavirinol) is under test in clinical trials. In this report I will analyze the effectiveness of the abacavirinol drug, further refered to as "abac," in variable groups in order to see if any factors effect the drug. The groups on consideration are gender, intravenous(IV) drug use, and sexual orientation.
-
+In this RMD file the data on only males is considered.
+  
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
@@ -74,5 +75,5 @@ Because we reject the null hypothesis of both the fisher and chisquare test. We 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-Overall taking into consideration the entire trial and variables the tests, graph and numerical results rejected the null hypothesis. Therefore, we conclude that the abac drug is more effective than the placebo. However, the drug works less effectively on women and those in the LGBT community than it does on men and IV drug users.
+The men in the trial had lower AIDs infection rates when taking the abac drug than when taking the placebo, as shown in the bar chart and precentage tables. In both the fisher test and chi-squared test the null hypothesis is rejected, this mean that the placebo does not have a greater affect on a patients health. Based on the analyses of the given data one can recommened this drug to males at risk for AIDS contraction.
 

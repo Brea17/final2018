@@ -20,6 +20,7 @@ Sexualorientation <- filter(abac, LBGT=="yes")
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
 A new  preventative aides (abacavirinol) is under test in clinical trials. In this report I will analyze the effectiveness of the abacavirinol drug, further refered to as "abac," in variable groups in order to see if any factors effect the drug. The groups on consideration are gender, intravenous(IV) drug use, and sexual orientation.
+In this RMD file the data on only those who are LGBT is considered.
 
 # Methods
 
@@ -73,5 +74,5 @@ fisher.test(results4)
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-Overall taking into consideration the entire trial and variables the tests, graph and numerical results rejected the null hypothesis. Therefore, we conclude that the abac drug is more effective than the placebo. However, the drug works less effectively on women and those in the LGBT community than it does on men and IV drug users.
+The results conclusively decide that the abac drug does not effectively work on LGBT people; more LGBT people contract AIDs when taking the drug then when taking the placebo. We fail to reject the null hypothesis, due to high p-values in both inferential results, and suggest this drug not be given to memebers of the LGBT community based on all provided evidence.
 
