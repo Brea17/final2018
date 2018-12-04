@@ -19,138 +19,169 @@ Sexualorientation <- filter(abac, LBGT=="yes")
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-A new  preventative aides (abacavirinol) is under test in clinical trials. Analyze the effectiveness of this drug across the board. Consider population subgroups by gender, drug use, and sexual orientation. Finish this!
+A new  preventative aides (abacavirinol) is under test in clinical trials. In this report I will analyze the effectiveness of the abacavirinol drug, further refered to as "abac," in variable groups in order to see if any factors effect the drug. The groups on consideration are gender, intravenous(IV) drug use, and sexual orientation.
 
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
-
+This report will look at graphs of the data in which the desired groups are seperated and classified by infection and drug type (real or placebo). In addition this report will compare the numeric precentages of infection by placebo or drug takers. It will compare p-values of the fisher test and chi-squared test to decide if the null hypothesis, the drug is less effective than the placebo, is rejected.
+  
 #Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
-## Descriptive Results
-
-### Graphical Descriptive Results
+## Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
-#abac data
+###abac data
 ```{r}
 results <- xtabs(~infected+treatment, data = abac)
 barchartGC(results, type = "percent")
 ```
 
-#Druggies data
+Over all those receiving the placebo seem to get AIDS more often than those who took the drug were less likely to get AIDS. However, of those who did not get AIDS slightly more took the placebo than those who took the abac drug. The abac drug seems to be working since less people on it got AIDS than those on the placebo. 
+  
+###Druggies data
 ```{r}
 results1 <- xtabs(~infected+treatment, data = Druggies)
-barchartGC(results, type = "percent")
+barchartGC(results1, type = "percent")
 ```
+Of those who did not aquire AIDS those taking the placebo had a higher percentage than those taking the abac drug. Of the people who got AIDS more were taking the placebo than those who were on the drug, this indicates the drug is in fact preventing AIDS. This graph has a lower infection rate of those taking the drug than the placebo; this suggests the abac drug may work better on IV drug users than other groups.
 
-#Female data
+###Female data
 ```{r}
 results2 <- xtabs(~infected+treatment, data = Female)
-barchartGC(results, type = "percent")
+barchartGC(results2, type = "percent")
 ```
 
-#Male Data
+Those who did not aquire AIDS were about equal between those taking the drug and those taking the placebo, though those on the placebo have a slightly higher percentage. Of the people who got AIDS more were taking the abac than those who were on the placebo, this indicates the abac drug is not doing its job in helping prevent AIDS. This graph also suggests the abac drug is less likely to work on women.
+  
+###Male Data
 ```{r}
 results3 <- xtabs(~infected+treatment, data = Male)
-barchartGC(results, type = "percent")
+barchartGC(results3, type = "percent")
 ```
 
-#Sexualorientation data
+Those who did not aquire AIDS were about equal between those taking the abac drug and those taking the placebo. Of the people who got AIDS more were taking the placebo than those who were on the abac drug, this indicates the abac drug is most likely doing its job in  helping to prevent AIDS. This graph has a lower infection rate of those taking the drug than the placebo; this suggests the abac drug may work better on men than other groups.
+  
+###Sexualorientation data
 ```{r}
 results4 <- xtabs(~infected+treatment, data = Sexualorientation)
-barchartGC(results, type = "percent")
+barchartGC(results4, type = "percent")
 ```
 
-### Numerical Descriptive Results
+Those who did not aquire AIDS were about equal between those taking the abac drug and those taking the placebo. Of the people who got AIDS more were taking the abac than those who were on the placebo, this indicates the abac drug is not doing its job in helping prevent AIDS.This graph also suggests the abac drug is less likely to work on wthose in the LGBT community.
+
+## Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
   
-#abac data
+###abac data
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
+    Taking into account the entire data set, out of all the people who took the abac drug 4.04% became infected and of those taking the placebo 5.54% became infected.
     
-#Druggies data
+###Druggies data
 ```{r}
 colPerc(results1)
 rowPerc(results1)
 ```
+  Taking into account only those using IVdrug ("Druggies"): 3.17% of those taking the abac drug were infected and of those taking the placebo 7.4% became infected.
   
-#Female Data
+###Female Data
 ```{r}
 colPerc(results2)
 rowPerc(results2)
 ```
+  When isolated to only the females; 3.96% of  those taking the abac drug became infected and of those taking the placebo only 2.59% become infected.
   
-#Male data
+###Male data
 ```{r}
 colPerc(results3)
 rowPerc(results3)
 ```
+  When isolated to only the men; only 4.14% of those on the abac drug became infected, and of those on the placebo 8.92% became infected.
   
-#Sexualorientaion data  
+###Sexualorientaion data  
 ```{r}
 colPerc(results4)
 rowPerc(results4)
 ```
-
+  Interestingly, of those in the LGBT comuunity who took the abac drug 6.51% became infected, whereas only 3.06% on the placebo became infected.
 
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
   
-#abac data
+###abac data
 ```{r}
 chisqtestGC(results, graph = TRUE)
 ```
-
+  
+  We reject the null hypothesis because there is only a p-value of 0.0168.
+  
 ```{r}
 fisher.test(results)
 ```
+  We reject the null hypothesis because there is only a p-value of 0.0168.
+Because we reject the null hypothesis of both the fisher and chisquare test. We determine there is a positive correlation in the results of infection between those taking the placebo and those who do not.
   
-#Druggies data
+###Druggies data
 ```{r}
 chisqtestGC(results1, graph = TRUE)
 ```
-
+  
+  The low p-value, 0.0227, causes us to reject the null hypothesis.
+  
 ```{r}
 fisher.test(results1)
 ```
-  
-#Female data
+  The low p-value, 0.01929, causes us to reject the null hypothesis.
+Because we reject the null hypothesis of both the fisher and chisquare test. We determine there is a positive correlation in the results of infection between those taking the placebo and those who do not.
+    
+###Female data
 ```{r}
 chisqtestGC(results2, graph = TRUE)
 ```
-
+  
+  We fail to reject the null hypothesis in this test with a p-value of 0.062.
 ```{r}
 fisher.test(results2)
 ```
+  We reject the null hypothesis in the fisher test with a P-VALUE of .049.
+  Because we fail to reject the null hypothesis in one and not the other the results are inconclusive, therefor we reject the null hypothesis.
   
-#Male data
+###Male data
 ```{r}
 chisqtestGC(results3, graph = TRUE)
 ```
-
+  
+  We reject the null hypothesis because the p-vaule is 0.
+  
 ```{r}
 fisher.test(results3)
 ```
+  We reject the null hypothesis because the p-value is too low at 0.000004352.
+Because we reject the null hypothesis of both the fisher and chisquare test. We determine there is a positive correlation in the results of infection between those taking the placebo and those who do not.
   
-#Sexualorientaton data
+###Sexualorientaton data
 ```{r}
 chisqtestGC(results4, graph = TRUE)
 ```
-
+  
+  We fail to reject the null hypothesis because the p-value is 0.0743.
+  
 ```{r}
 fisher.test(results4)
 ```
-  
+  We fail to reject the null hypothesis because the p-value is 0.5951.
+  Because we fail to reject the null hypothesis of both the fisher and chisquare test. We determine there is not a positive correlation in the results of infection between those taking the placebo and those who do not.
+    
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
-
+Overall taking into consideration the entire trial and variables the tests, graph and numerical results rejected the null hypothesis. Therefore, we conclude that the abac drug is more effective than the placebo. However, the drug works less effectively on women and those in the LGBT community than it does on men and IV drug users.
 
